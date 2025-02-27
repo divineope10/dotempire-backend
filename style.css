@@ -1,0 +1,519 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+header {
+    padding: 25px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    transition: background-color 0.5s ease-in-out;
+    animation: fadeIn 1.8s ease-in-out forwards;
+}
+
+header .logo {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+}
+
+header .logo span {
+    color: red;
+}
+
+header nav a{
+    margin-left: 55px;
+    font-size: 23px;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+header nav a:hover:after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+nav a.active {
+    color: red;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default */
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+section {
+    height: 100vh;
+}
+
+/* Hero Section - Full Screen */
+.hero {
+    height: 100vh;
+    background-image: url('OIP.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Particle Container */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* So they don’t interfere with clicks */
+    z-index: 0;
+}
+
+/* Individual Particle */
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(37, 99, 235, 0.9); /* Brighter */
+    border-radius: 50%;
+    opacity: 1;
+    animation: floatParticles 6s infinite alternate ease-in-out;
+}
+
+/* Random Floating Animation */
+@keyframes floatParticles {
+    0% { transform: translateY(0px) scale(1); opacity: 1; }
+    50% { transform: translateY(-30px) scale(1.2); opacity: 0.8; }
+    100% { transform: translateY(0px) scale(1); opacity: 1; }
+}
+
+/* Animated Glowing Particles */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    opacity: 0.1;
+    animation: moveParticles 20s infinite linear alternate;
+    z-index: -1;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+/* When Scrolling, Move Text Down */
+.scrolled .container {
+    transform: translate(-50%, 50vh); /* Moves text downward */
+    opacity: 0; /* Fades out when scrolled down */
+}
+
+/* Smooth Page Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Moving Glowing Particles */
+@keyframes moveParticles {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-50px) scale(1.05); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+/* Title Glow Animation */
+@keyframes glowEffect {
+    0% { text-shadow: 0px 0px 15px #2563eb; }
+    100% { text-shadow: 0px 0px 25px #1d4ed8; }
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply Animation to Hero Section Text */
+.hero h1 {
+    font-size: 3.5rem;
+    text-shadow: 0px 0px 15px #2563eb;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    text-shadow: 0px 0px 15px ;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Apply Animation to Subtext */
+.hero p {
+    font-size: 1.6rem;
+    margin: 10px 0;
+    opacity: 0;
+    animation: fadeIn 1.8s ease-in-out forwards;
+}
+
+/* CTA Button Animation */
+.cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px #2563eb;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Button Hover Effect */
+.cta-button:hover {
+    background: #1d4ed8;
+    box-shadow: 0px 0px 20px #1d4ed8;
+    scale: 1.112;
+    transition: .6s;
+}
+
+/* ================= ABOUT SECTION ================= */
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    text-align: center;
+    padding: 150px 20px 0;;
+    background: #f8f9fa;
+    color: #121212;
+}
+
+.about-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    gap: 50px;
+    justify-content: center;
+}
+
+.about-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.about-left img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-right {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-right h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.about-right p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.about .ct-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    text-align: center;
+    border: 2px solid #1d4ed8;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px #1d4ed8;
+    animation: fadeIn 2s ease-in-out forwards;
+    opacity: 0;
+    background: #1d4ed8;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    display: block;
+}
+
+/* ================= SERVICES SECTION ================= */
+.services {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fff;
+    color: #121212;
+    padding: 150px 20px 0;;
+}
+
+.services-title {
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out forwards;
+    opacity: 0;
+    font-weight: 600;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.service-box {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    scale: 1.2;
+    cursor: pointer;
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #2563eb;
+}
+
+.service-box h3 {
+    font-size: 1.6rem;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact {
+    text-align: center;
+    padding: 250px 20px 0;
+    background: #f8f9fa;
+    color: #121212;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+.contact-title {
+    margin-bottom: 30px;
+    font-size: 2.4rem;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.contact-form, .contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    padding: 20px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.contact-info{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 1.5rem;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #121212;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #2563eb;
+}
+
+footer .footer-social  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+    height: 30px;
+}
+
+footer .footer-social i {
+    color: white;
+    transition: 0.3s;
+    height: 20px;
+}
+
+footer .footer-social i:hover {
+    color: #2563eb;
+}
+
+/* ================= RESPONSIVENESS ================= */
+@media (max-width: 900px) {
+    section {
+        padding: 20px;
+        height: auto;
+    }
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+        color: white;
+        font-size: 20px;
+    }
+
+    nav.active {
+        display: flex; /* Show when toggled */
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        color: white;
+        background: none;
+        border: none;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+    .contact-container, .services-container {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-left img {
+        width: 200px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .service-box:hover {
+        scale: 1;
+    }
+
+    .contact {
+        padding: 80px 20px;
+    }
+
+    .contact-info p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-left img {
+        width: 200px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .contact-info p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
