@@ -168,30 +168,10 @@ document.getElementById("contactForm").addEventListener("submit", async function
    submitButton.textContent = "Send Message";
    submitButton.disabled = false;
 
-   const formMessage = document.getElementById("formMessage");
+   const formMessage = document.getElementById("formMessage")
 
-try {
-    const response = await fetch("http://localhost:5000/send", { 
-        method: "POST", 
-        headers: { "Content-Type": "application/json" }, 
-        body: JSON.stringify(formData) 
-    });
-
-    const result = await response.json();
-    
-    formMessage.textContent = result.success || result.error;
-    formMessage.style.color = result.success ? "green" : "red";
-
-} catch (error) {
-    formMessage.textContent = "Failed to send message.";
-    formMessage.style.color = "red";
-}
-
-
-
-
-    try {
-        const response = await fetch("https://dotempire-backend.onrender.com", {
+        try {
+            const response = await fetch("https://dotempire-backend.onrender.com/send", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)

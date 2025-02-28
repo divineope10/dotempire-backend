@@ -16,20 +16,20 @@ app.get("/", (req, res) => {
     res.send("Server is running!");
 });
 
-// Contact Form Route
 app.post("/send", async (req, res) => {
+    console.log("Incoming request:", req.body); // Debugging Log
+    
     const { name, email, message } = req.body;
 
-    console.log("Incoming request:", req.body);
-
     if (!name || !email || !message) {
+        console.log("Missing fields:", req.body); // Debug log for missing fields
         return res.status(400).json({ error: "All fields are required." });
     }
 
     try {
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 587, // Use TLS instead of SSL
+            port: 587,
             secure: false,
             auth: {
                 user: process.env.EMAIL_USER,
