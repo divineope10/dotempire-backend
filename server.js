@@ -27,8 +27,8 @@ app.post("/send", async (req, res) => {
     try {
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 587, // Change to 587
-            secure: false, // Use TLS instead of SSL
+            port: 587, // Use TLS instead of SSL
+            secure: false,
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
@@ -37,7 +37,6 @@ app.post("/send", async (req, res) => {
                 rejectUnauthorized: false
             }
         });
-        
 
         let mailOptions = {
             from: process.env.EMAIL_USER,
@@ -46,16 +45,22 @@ app.post("/send", async (req, res) => {
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
         };
 
-        await transporter.sendMail(mailOptions);
-        res.json({ success: "Message sent successfully!" });
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error("Email error:", error);
+                return res.status(500).json({ error: "Failed to send message.", details: error.message });
+            }
+            console.log("Email sent:", info.response);
+            res.json({ success: "Message sent successfully!" });
+        });
 
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Failed to send message." });
+        console.error("Unexpected error:", error);
+        res.status(500).json({ error: "Something went wrong.", details: error.message });
     }
 });
 
-// Start Server
+// ✅ Move `app.listen` OUTSIDE the route!
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
