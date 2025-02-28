@@ -191,7 +191,7 @@ try {
 
 
     try {
-        const response = await fetch("https://dotempire.onrender.com/send", {
+        const response = await fetch("https://dotempire-backend.onrender.com", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
